@@ -1,28 +1,26 @@
 # == Schema Information
 #
-# Table name: reviews
+# Table name: movie_countries
 #
 #  id         :bigint           not null, primary key
-#  review     :text
-#  stars      :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  country_id :bigint           not null
 #  movie_id   :bigint           not null
-#  user_id    :bigint           not null
 #
 # Indexes
 #
-#  index_reviews_on_movie_id  (movie_id)
-#  index_reviews_on_user_id   (user_id)
+#  index_movie_countries_on_country_id  (country_id)
+#  index_movie_countries_on_movie_id    (movie_id)
 #
 # Foreign Keys
 #
+#  fk_rails_...  (country_id => countries.id)
 #  fk_rails_...  (movie_id => movies.id)
-#  fk_rails_...  (user_id => users.id)
 #
 require "test_helper"
 
-class ReviewTest < ActiveSupport::TestCase
+class MovieCountryTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

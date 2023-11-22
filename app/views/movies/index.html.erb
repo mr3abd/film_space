@@ -1,0 +1,12 @@
+
+
+<!-- search form -->
+<%= form_tag(movies_path, method: 'get') do %>
+  <%= text_field_tag(:actor_name, params[:actor_name] , class: "form-control" , placeholder: "search by actor_name") %>
+  <%= number_field_tag(:active_sort_rating, params[:active_sort_rating] , class: "form-control" , placeholder: "Need active_sort_rating") %>
+  <%= submit_tag %>
+<% end %>
+
+
+<%= render "movies" , movies: @movies %>
+

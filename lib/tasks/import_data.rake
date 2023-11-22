@@ -15,12 +15,18 @@ namespace :import do
       data[:actor] = Actor.find_or_create_by(name: data['Actor'])
       data[:filming_location] = FilmingLocation.find_or_create_by(name: data['Filming location'])
       data[:country] = Country.find_or_create_by(name: data['Country'])
+      movie = Movie.find_by_name(data[:name])
+      unless movie
+        movie =  Movie.create({
+          name: data[:name], director: data[:director],
+          description: data['Description'],
+          year: data['Year']
+        })
 
-      Movie.create!({
-        name: data[:name], director: data[:director], actor: data[:actor],
-        filming_location: data[:filming_location], description: data['Description'],
-        country: data[:country], year: data['Year']
-      })
+      end
+      movie.actors << data[:actor] unless  movie.actors.map(&:id).include? data[:actor].id
+      movie.filming_locations << data[:filming_location] unless movie.filming_locations.map(&:id).include? data[:filming_location].id
+      movie.countries << data[:country]  unless movie.countries.map(&:id).include? data[:country].id
     end
 
     # Import reviews
