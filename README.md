@@ -1,24 +1,18 @@
-# README
+# Film Space
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This quick docs how to run and what suggestion for next improvments
 
-Things you may want to cover:
+- How to run
+*  init rails env & ruby 3.2.2
+```ruby
+rake db:create && rake db:migrate && rake import:data # to import from CSV files
+```
 
-* Ruby version
 
-* System dependencies
+* sugestion to fix and improve
 
-* Configuration
+- merge all tables in one table with multiple inhernet like (user) as parent -> reviwer actor -> childs in-case not use as strong class
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ - add pagination fix pagy level with order by subquery
+- improve code importer task
